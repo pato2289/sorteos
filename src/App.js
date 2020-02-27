@@ -1,25 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import "bootswatch/dist/superhero/bootstrap.min.css"; 
+
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Draw from './components/Draw'
+import Teams from './components/Teams'
+import Tasks from './components/Tasks'
+import InvisibleFriend from './components/InvisibleFriend'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <div className="container">
+        <Route path="/" exact component={Home} />
+        <Route path="/draw" component={Draw} />
+        <Route path="/teams" component={Teams} />
+        <Route path="/tasks" component={Tasks} />
+        <Route path="/invisiblefriend" component={InvisibleFriend} />
+      </div>
+    </Router>
   );
 }
 
