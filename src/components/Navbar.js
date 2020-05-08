@@ -21,7 +21,7 @@ const Navbar = () => {
                     <Link className="nav-link" to="/tasks"> Tareas </Link>
                 </li>
                 <li class="nav-item active">
-                    <Link className="nav-link" to="/invisiblefriend"> AmigoInvisible </Link>
+                    <Link className="nav-link disabled" to="/invisiblefriend" > AmigoInvisible </Link>
                 </li>
                 </ul>
             </div>
