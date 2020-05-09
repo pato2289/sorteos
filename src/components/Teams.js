@@ -94,7 +94,12 @@ const Teams = () => {
                <br/>
                Luego, pulsa el boton "Equipos" y seran armados los equipos automaticamente
             </p>
-
+            <div className="col-md-6">
+                    {(mapArray) &&
+                        // No esta mapeando porque equipoArmado esta vacio, solucionar
+                        armarEquipos()
+                    }
+            </div>
             <div className="row">
                 <div className="col-md-6">
                     <form onSubmit={onSubmit}>
@@ -136,14 +141,7 @@ const Teams = () => {
                         </button>
                     </div>
                     </form>
-                </div>
-                <div className="col-md-6">
-                    {(mapArray) &&
-                        // No esta mapeando porque equipoArmado esta vacio, solucionar
-                        armarEquipos()
-                    }
-                </div>
-                     
+                </div>                     
             </div>
         </Fragment>
      );

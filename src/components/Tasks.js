@@ -42,8 +42,8 @@ const Tasks = () => {
         console.log('arrayTareasMezclado: ', inputValues.tareas)
     }
     for(let i = 0; i<inputValues.tareas.length && inputValues.nombres.length; i++){
-    arrayResultado[i] = `${inputValues.nombres[i]}: ${inputValues.tareas[i]}`;
-    console.log(`en la posicion ${i} esta:  ${arrayResultado[i]}`)
+        arrayResultado[i] = `${inputValues.nombres[i]}: ${inputValues.tareas[i]}`;
+        console.log(`en la posicion ${i} esta:  ${arrayResultado[i]}`)
     }
 }
 
@@ -76,6 +76,13 @@ const Tasks = () => {
     return (
         <>
             <h1>Desde la pagina de tareas</h1>
+            <div className="row mt-3">
+                    <div className="col bg-primary">
+                    {runOnSubmit
+                    &&
+                    asignarTareas()}
+                    </div>
+            </div>
             <form onSubmit={onSubmit}>
             <div className="row">
                 <div className="col-md-6">
@@ -105,14 +112,6 @@ const Tasks = () => {
                     </button>
                 </div>
             </div>
-                <div className="row mt-3 p-0">
-                    <div className="col bg-primary">
-                    {runOnSubmit
-                    &&
-                    asignarTareas()}
-                    </div>
-                   
-                </div>
             </form>
         </>
     );
