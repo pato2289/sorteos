@@ -1,4 +1,5 @@
 import React, { useState, useReducer, useEffect } from 'react';
+import Boton from './ui/Boton';
 
 const Tasks = () => {
 
@@ -13,7 +14,8 @@ const Tasks = () => {
     //el .split hace que cada enter corte y guarde el valor en una nueva posicion
     const onChange = e => {
         const { name, value } = e.target
-        setInputValues({ [name]:value.split('\n') });
+        setInputValues({ [name]:value.split('\n').filter(elem => elem !== '') });
+        console.log(inputValues.nombres, ' ', inputValues.tareas)
     }
 
     // Mezclar ambos arrays
@@ -34,7 +36,6 @@ const Tasks = () => {
     const mezclandoArrays = () => {
     // Mezclo los array a medida que los voy escribiendo
     if(inputValues.nombres !== undefined){
-        mezclarArreglo(inputValues.nombres)
         console.log('arrayNombresMezclado: ', inputValues.nombres)
     }
     if(inputValues.tareas !== undefined){
@@ -104,12 +105,12 @@ const Tasks = () => {
             </div>
             <div className="row">
                 <div className="col">
-                    <button 
+                    <Boton 
                         type="submit"
                         className="btn btn-primary btn-block"
                     >
                         Asignar Tareas
-                    </button>
+                    </Boton>
                 </div>
             </div>
             </form>

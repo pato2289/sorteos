@@ -1,5 +1,7 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import Boton from './ui/Boton'
+import Titulo from './ui/Titulo'
 
 const Teams = () => {
 
@@ -16,7 +18,7 @@ const Teams = () => {
 
     //Tomar los valores del textarea y crear el Array
     const onChange = (e) => {
-        setCrearArray(e.target.value.split("\n"))
+        setCrearArray(e.target.value.split("\n").filter(elem => elem !== ''))
         console.log(crearArray)
     }
 
@@ -86,17 +88,15 @@ const Teams = () => {
         history.push('/')
     }
 
-
     return ( 
         <Fragment>
-            <h1 className="text-center">Armar Equipos</h1>
+            <Titulo className="text-center">Armar Equipos</Titulo>
             <p>Reglas: Ingresa la cantidad de nombres que quieras, separandolo con "enter"
                <br/>
                Luego, pulsa el boton "Equipos" y seran armados los equipos automaticamente
             </p>
             <div className="col-md-6">
                     {(mapArray) &&
-                        // No esta mapeando porque equipoArmado esta vacio, solucionar
                         armarEquipos()
                     }
             </div>
@@ -104,7 +104,7 @@ const Teams = () => {
                 <div className="col-md-6">
                     <form onSubmit={onSubmit}>
                     <div className="form-group">
-                        <label for="exampleTextarea">Ingresa nombres</label>
+                        <label>Ingresa nombres</label>
                         <textarea 
                             className="form-control" 
                             rows="5"
@@ -112,33 +112,28 @@ const Teams = () => {
                             disabled={enabledButton}
                         />
                     </div>
-                    <label for="exampleTextarea">Ingresa cantidad de personas por equipo:</label>
-                    <div className="row">
-                        <div className="col-md-6">
-                            
-                        </div>
-                    </div>
+                    <label>Ingresa cantidad de personas por equipo:</label>
                     <div className="form-group d-flex justify-content-between">
                         <input
                             type="text"
                             onChange={cantEquipos} 
                             disabled={enabledButton}
                         />
-                        <button 
+                        <Boton 
                             className="btn btn-primary"
                             type="submit"
                             disabled={enabledButton}
                         >
                             Armar
-                        </button>
-                        <button
+                        </Boton>
+                        <Boton
                             className="btn btn-primary"
                             type="button"
                             disabled={!enabledButton}
                             onClick={inicio}
                         >
                             Reiniciar
-                        </button>
+                        </Boton>
                     </div>
                     </form>
                 </div>                     

@@ -1,29 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import styled from '@emotion/styled'
+const Enlace = styled.li`
+    :hover{
+        text-decoration: underline;
+    }
+`;
 
 const Navbar = () => {
     return ( 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
-            <Link class="navbar-brand" to="/">RandomWorld</Link>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-0">
+            <div className="container">
+            <Link className="navbar-brand" to="/">RandomWorld</Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+            <div className="collapse navbar-collapse" id="navbarColor01">
+                <ul className="navbar-nav ml-auto">
+                <Enlace className="nav-item active">
                     <Link className="nav-link" to="/draw"> Sorteo </Link>
-                </li>
-                <li class="nav-item active">
+                </Enlace>
+                <Enlace className="nav-item active">
                     <Link className="nav-link" to="/teams"> Equipos </Link>
-                </li>
-                <li class="nav-item active">
+                </Enlace>
+                <Enlace className="nav-item active">
                     <Link className="nav-link" to="/tasks"> Tareas </Link>
-                </li>
-                <li class="nav-item active">
+                </Enlace>
+                <Enlace className="nav-item active">
                     <Link className="nav-link disabled" to="/invisiblefriend" > AmigoInvisible </Link>
-                </li>
+                </Enlace>
                 </ul>
+            </div>
             </div>
         </nav>
      );

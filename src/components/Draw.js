@@ -1,17 +1,18 @@
 import React, { Fragment, useState } from 'react';
+import Boton from './ui/Boton'
+import Titulo from './ui/Titulo'
+
 
 const Draw = () => {
 
     const [nombres, setNombres] = useState([])
     const [ganador, setGanador] = useState('')
-    const [sorteado, setSorteado] = useState(true)
+    const [sorteado, setSorteado] = useState(false)
     const [enabledButton, setEnabledButton] = useState(true)
-
-    
     
     const onChange = (e) => {
         console.log(e.target.value)
-        setNombres(e.target.value.split("\n"))
+        setNombres(e.target.value.split("\n").filter(elem => elem !== ''))
         console.log(nombres)
         setEnabledButton(false)
     }
@@ -22,14 +23,11 @@ const Draw = () => {
         var ganador = nombres[Math.floor(Math.random() * nombres.length)]
         setGanador(ganador)
         console.log(ganador)
-        setSorteado(false)
+        setSorteado(true)
         setEnabledButton(true)
     }
 
-    const mostrarGanador = () =>{
-        if(sorteado){
-            return null;
-        } else {
+    const mostrarGanador = () => {
             console.log("ejecutando mostrar ganador")
             return (
                 <div className="col-md-6">
@@ -46,37 +44,39 @@ const Draw = () => {
                 </div>
             )
         }
-    }
 
     return (
         <Fragment>
-            <h1 className="text-center">Realizar un Sorteo</h1>
+            <div className="text-center">
+            <Titulo className="text-center">Realizar un Sorteo</Titulo>
             <p>Reglas: Ingresa la cantidad de nombres que quieras, separandolo con "enter"
                <br/>
                Luego, pulsa el boton "Sortear" y 1 sera el elegido como ganador
             </p>
 
+            {sorteado && 
+                    mostrarGanador()}
             <div className="row">
                 <div className="col-md-4">
                     <form onSubmit={onSubmit}>
                     <div className="form-group">
-                        <label for="exampleTextarea">Ingresa nombres</label>
+                        <label>Ingresa nombres</label>
                         <textarea 
                             className="form-control" 
                             rows="6"
                             onChange={onChange}
                         />
                     </div>
-                    <button 
+                    <Boton 
                         className="btn btn-primary"
                         type="submit"
                         disabled={enabledButton}
                     >
                         Sortear
-                    </button>
+                    </Boton>
                     </form>
                 </div>
-                    {mostrarGanador()}
+            </div>
             </div>
         </Fragment>
      );

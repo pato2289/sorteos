@@ -2,7 +2,7 @@ import React from 'react';
 
 const InvisibleFriend = () => {
     return ( 
-        <h1>Desde Invisible Friend</h1>
+        <h1 className="text-center">Proximamente...</h1>
      );
 }
  
