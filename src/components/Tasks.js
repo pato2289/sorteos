@@ -1,5 +1,14 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useReducer } from 'react';
 import Boton from './ui/Boton';
+import styled from '@emotion/styled';
+import Titulo from './ui/Titulo';
+
+const TextArea = styled.textarea`
+    @media (min-width: 768px) {
+        height: 150px;
+        width: 100%;
+    }
+`;
 
 const Tasks = () => {
 
@@ -57,14 +66,16 @@ const Tasks = () => {
     const asignarTareas = () => {
         console.log('ejecutando asignar tareas')
         return (
-            <div>
+            <div className="row mt-3 text-center">
+                    <div className="col-md-3 bg-primary m-auto">
                 {arrayResultado.map(resultado => (
                     <>
-                    <p
+                    <h3
                         className="bg-primary"
-                    >{resultado}</p>
+                    >{resultado}</h3>
                     </>
                 ))}
+                </div>
             </div>    
         ) 
     }
@@ -76,35 +87,40 @@ const Tasks = () => {
 
     return (
         <>
-            <h1>Desde la pagina de tareas</h1>
-            <div className="row mt-3">
-                    <div className="col bg-primary">
-                    {runOnSubmit
-                    &&
-                    asignarTareas()}
-                    </div>
+           {runOnSubmit
+               &&
+            asignarTareas()}
+
+            <div className="row">
+                <div className="col-md-8 m-auto">
+                    <Titulo className="text-center">Asignar Tareas</Titulo>
+                    <p>Reglas: Ingresa la cantidad de nombres que quieras, separandolo con "enter"
+                        <br />
+                        Luego, ingresa la cantidad de tareas a realizar, y al pulsar el boton, se asignaran las tareas a las personas
+                    </p>
+                </div>
             </div>
             <form onSubmit={onSubmit}>
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-8 d-flex m-auto justify-content-around">
+                    <div className="d-flex flex-column">
                     <span className="text-center">Ingrese los nombres</span>
-                    <br/>
-                    <textarea
+                    <TextArea
                         name="nombres" 
                         onChange={onChange}
                     />
-                </div>
-                <div className="col-md-6">
+                    </div>
+                    <div className="d-flex flex-column">
                     <span className="text-center">Ingrese las tareas</span>
-                    <br/>
-                    <textarea
+                    <TextArea
                         name="tareas" 
                         onChange={onChange}
                     />
+                    </div>
                 </div>
             </div>
             <div className="row">
-                <div className="col">
+                <div className="col-md-3 m-auto">
                     <Boton 
                         type="submit"
                         className="btn btn-primary btn-block"

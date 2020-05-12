@@ -30,15 +30,17 @@ const Draw = () => {
     const mostrarGanador = () => {
             console.log("ejecutando mostrar ganador")
             return (
-                <div className="col-md-6">
-                    <div className="text-center card text-white bg-primary">
-                        <div className="card-body">
-                            <h2 className="card-title">
-                                El ganador del sorteo es:
-                            </h2>
-                            <h1 classname="card-text">
-                                {ganador}
-                            </h1>
+                <div className="row">
+                    <div className="col-md-6 p-3 m-auto">
+                        <div className="text-center card text-white bg-primary">
+                            <div className="card-body">
+                                <h2 className="card-title">
+                                    El ganador del sorteo es:
+                                </h2>
+                                <h1 classname="card-text">
+                                    {ganador}
+                                </h1>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -47,17 +49,19 @@ const Draw = () => {
 
     return (
         <Fragment>
-            <div className="text-center">
-            <Titulo className="text-center">Realizar un Sorteo</Titulo>
-            <p>Reglas: Ingresa la cantidad de nombres que quieras, separandolo con "enter"
-               <br/>
-               Luego, pulsa el boton "Sortear" y 1 sera el elegido como ganador
-            </p>
-
             {sorteado && 
                     mostrarGanador()}
             <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-8 m-auto text-center">
+                    <Titulo>Realizar un Sorteo</Titulo>
+                    <p>Reglas: Ingresa la cantidad de nombres que quieras, separandolo con "enter"
+                    <br/>
+                    Luego, pulsa el boton "Sortear" y 1 sera el elegido como ganador
+                    </p>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-4 m-auto">
                     <form onSubmit={onSubmit}>
                     <div className="form-group">
                         <label>Ingresa nombres</label>
@@ -76,7 +80,6 @@ const Draw = () => {
                     </Boton>
                     </form>
                 </div>
-            </div>
             </div>
         </Fragment>
      );
